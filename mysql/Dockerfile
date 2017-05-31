@@ -1,12 +1,12 @@
-FROM water/alpine
-MAINTAINER water youwater@gmail.com
+FROM cyy/alpine3.6
+LABEL author="cyy"
 
 # 软件包安装
-RUN apk add mysql mysql-client
+RUN apk add mysql mysql-client ;\
 
 # 软件包参数配置
 
-RUN mkdir /run/mysqld/ && mkdir -p /apps/mysql/
+    mkdir /run/mysqld/ && mkdir -p /apps/mysql/
 COPY my.cnf /etc/mysql/my.cnf
 RUN chmod 644 /etc/mysql/my.cnf
 COPY init_mysql.sh /apps/
