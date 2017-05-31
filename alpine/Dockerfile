@@ -1,18 +1,16 @@
-FROM alpine:latest
-MAINTAINER water youwater@gmail.com
+FROM alpine:3.6
+LABEL cyy 2214695946@qq.com
 
 # 换为国内镜像，以加速docker image制作速度，非中国镜内用户请注释掉下一行
-RUN echo 'http://mirrors.aliyun.com/alpine/latest-stable/main' > /etc/apk/repositories
-RUN echo '@community http://mirrors.aliyun.com/alpine/latest-stable/community' >> /etc/apk/repositories
-RUN echo '@testing http://mirrors.aliyun.com/alpine/edge/testing' >> /etc/apk/repositories
-
-RUN apk update && apk upgrade
-
+COPY repositories /etc/apk/repositories
 #时区配置
 ENV TIMEZONE Asia/Shanghai
-RUN apk add tzdata
-RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime
-RUN echo $TIMEZONE > /etc/timezone
-
+RUN apk update && apk upgrade;\
+    apk add tzdata;\
+    ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime;\
+    echo $TIMEZONE > /etc/timezone;\
+    rm -rf /var/cache/apk/* ;\
+    rm -rf /tmp/*
+    
 # 容器命令执行
 CMD ["sh"]
