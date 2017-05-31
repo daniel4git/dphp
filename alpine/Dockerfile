@@ -1,5 +1,5 @@
 FROM alpine:3.6
-LABEL cyy 2214695946@qq.com
+LABEL author="cyy"
 
 # 换为国内镜像，以加速docker image制作速度，非中国镜内用户请注释掉下一行
 COPY repositories /etc/apk/repositories
