@@ -5,10 +5,10 @@ LABEL author="cyy"
 COPY repositories /etc/apk/repositories
 #时区配置
 ENV TIMEZONE Asia/Shanghai
-RUN apk update && apk upgrade;\
-    apk add tzdata;\
-    ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime;\
-    echo $TIMEZONE > /etc/timezone;\
+RUN apk update && apk upgrade ;\
+    apk add tzdata ;\
+    ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime ;\
+    echo $TIMEZONE > /etc/timezone ;\
     rm -rf /var/cache/apk/* ;\
     rm -rf /tmp/*
     
