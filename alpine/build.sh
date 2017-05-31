@@ -3,7 +3,7 @@
 # 清除已有的
 docker stop alpine
 docker rm alpine
-docker rmi water/alpine 
+docker rmi cyy/alpine 
 
 # 重新生成
-docker build -t water/alpine ./
+docker build -t cyy/alpine:3.6 ./
